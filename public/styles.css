@@ -4,7 +4,7 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-/*styling header*/
+/*styling HEADER*/
 h1 {
   color: white;
   background-color: #51616E;
@@ -31,7 +31,7 @@ h1 {
   text-decoration: none;
 }
 
-/*styling main*/
+/*styling VIEW CONTACTS page*/
 .contact_total {
   padding: .5em 0 .5em 10px;
   margin: 10px auto;
@@ -45,6 +45,7 @@ h1 {
   border-bottom: 2px solid white;
 }
 
+/*VIEW CONTACTS contact list*/
 .contact_list {
   padding: 0;
   margin: 0 auto;
@@ -55,12 +56,16 @@ h1 {
   margin: 10px auto;
   width: 600px;
   background-color: #D8DDE2;
-  color: #51616E;
   list-style: none;
   font-size: 18px;
-  text-decoration: none;
 }
 
+.contact_list a {
+  text-decoration: none;
+  color: #51616E;
+}
+
+/*VIEW CONTACTS edit and delete*/
 .edit_contact {
   padding: 5px 0;
   margin: 0;
@@ -76,24 +81,44 @@ h1 {
   color: white;
 }
 
-/*show_contact pages*/
+/*SHOW CONTACT pages*/
 .show_contact {
-  padding: 0;
-  margin: 0 auto;
+  padding: 10px 0;
+  margin: 10px auto;
+  background-color: #D8DDE2;
+  width: 600px;
 }
 
 .show_contact li {
-  padding: .5em 0 .5em 10px;
-  margin: 10px auto;
-  width: 600px;
-  background-color: #D8DDE2;
+  padding-left: 10px;
   color: #51616E;
   list-style: none;
   font-size: 18px;
   text-decoration: none;
+  line-height: 1.5em;
 }
 
-/*styling footer*/
+.show_contact strong{
+  color: #262631;
+}
+
+/*ADD NEW CONTACT page*/
+.new_contact {
+  padding: .5em 0 .5em 10px;
+  margin: 10px auto;
+  width: 600px;
+  text-align: center;
+  background-color: #E2E1DF;
+  color: #51616E;
+}
+
+.new_contact label {
+  display: block;
+}
+
+
+
+/*styling FOOTER*/
 
 h5 {
   padding: 10px 0;

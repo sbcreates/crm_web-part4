@@ -18,6 +18,12 @@ get '/contacts' do
   erb :contacts
 end
 
+# *----PAGE TO ADD A NEW CONTACT---*
+get "/contacts/new" do
+  erb :new
+end
+
+
 # *----SEE EACH CONTACT SEPARATELY ON ITS OWN PAGE---*
 get "/contacts/:id" do
   @contact = Contact.find_by({id: params[:id].to_i})
@@ -28,18 +34,23 @@ get "/contacts/:id" do
   else
     raise Sinatra::NotFound
   end
+  # this section of get / do needs to be last of it's kind (/contacts) because otherwise it will not show the page and instead will show a 404 message (b/c of raise Sinatra::NotFound). Sinatra will read this page from top to bottom and get stuck on that part before it can see any other /contact pages.
 end
 
-#*----PAGE TO ADD A NEW CONTACT---*
-get "/contacts/new" do
-
-  erb :new
+post '/contacts' do
+  Contact.create(
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    email: params[:email],
+    note: params[:note]
+  )
+  redirect to('/contacts')
 end
 
 
 #*----ABOUT PAGE---*
 get "/about" do
-
+  erb :about
 end
 
 
