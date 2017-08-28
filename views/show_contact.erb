@@ -1,12 +1,14 @@
 <ul class="show_contact">
 
-  <li><strong>Name:</strong> <%= @contact[:first_name] %> <%= @contact[:last_name] %></li>
+  <li><strong>Name:</strong> <%= @show_contact[:first_name] %> <%= @show_contact[:last_name] %></li>
 
-  <li><strong>E-mail:</strong> <%= @contact[:email] %></li>
+  <li><strong>E-mail:</strong> <%= @show_contact[:email] %></li>
 
 </ul>
 
-<form action="/contacts/<%= @contact.id %>" method="post">
-<input type="hidden" name="_method" value="put">
+<form action="/contacts/<%= @show_contact.id %>" method="post">
+
+<input type="hidden" name="_method" value="delete">
 <input type="submit" value="Delete Contact">
+
 </form>
