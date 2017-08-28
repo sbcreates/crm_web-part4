@@ -1,0 +1,10 @@
+
+<p class='contact_total'>There are <span>x</span> contacts</p>
+
+<ul class='contact_list'>
+  <% @contacts.each do |contact| %>
+  <li><a href="/contacts/<%= contact[:id] %>"><%= contact[:first_name] %> <%= contact[:last_name] %> (<%= contact[:email] %>)</a>
+    <h6 class="edit_contact"><a href="#">Edit</a> | <a href="#">Delete</a></h6>
+    <% end %>
+  </li>
+</ul>

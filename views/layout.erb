@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:4567/styles.css">
+    <!-- needed to put in the full path to styles.css in order to style my show_contact pages. When sinatra sees contact/# it's going to look for contact/styles.css which isn't the right path. Giving it the full path will solve this issue. -->
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <title>SB's CRM</title>
+
+  </head>
+
+  <body>
+
+    <header>
+      <h1>SB's CRM</h1>
+      <nav>
+        <ul class="head_nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/contacts">View Contacts</a></li>
+          <li><a href="/contacts/new">Add a Contact</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <h5>©SBC123</h5>
+    </footer>
+
+  </body>
+</html>
