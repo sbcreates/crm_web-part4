@@ -32,13 +32,12 @@ get "/contacts/:id" do
     erb :show_contact
 end
 
-# *----SEE EACH CONTACT SEPARATELY ON ITS OWN PAGE---*
+# *----PAGE YOU'RE DIRECTED TO WHEN YOU WANT TO EDIT A CONTACT---*
 get "/contacts/:id/edit" do
   @contact = Contact.find_by({id: params[:id].to_i})
 
   erb :edit_contact
 end
-
 
 # *----THIS POST WILL ADD A NEW CONTACT INTO OUR CRM AND WILL THEN REDIRCT TO THE /CONTACTS PAGE----*
 post '/contacts' do
@@ -48,6 +47,19 @@ post '/contacts' do
     email: params[:email],
     note: params[:note]
   )
+  redirect to('/contacts')
+end
+
+# *----THIS ROUTE IS TO HANDLE THE PUT REQUEST THAT WILL BE SUBITTED TO OUR SERVER ONCE WE REQUEST TO UPDATE A CONTACT BY THEIR ID NUMBER.----*
+put '/contact/:id' do
+  # the params hash will contain the id along with any of information we submitted in the form.
+  @contact = Contact.find_by(id: params[:id].to_i)
+    @contact.update(
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    email: params[:email],
+    note: params[:note]
+
   redirect to('/contacts')
 end
 
