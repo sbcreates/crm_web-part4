@@ -29,14 +29,18 @@ get "/contacts/:id" do
   @contact = Contact.find_by({id: params[:id].to_i})
 # params[:id] contains the id from the URL
 
-  if @contact
     erb :show_contact
-  else
-    raise Sinatra::NotFound
-  end
-  # this section of get / do needs to be last of it's kind (/contacts) because otherwise it will not show the page and instead will show a 404 message (b/c of raise Sinatra::NotFound). Sinatra will read this page from top to bottom and get stuck on that part before it can see any other /contact pages.
 end
 
+# *----SEE EACH CONTACT SEPARATELY ON ITS OWN PAGE---*
+get "/contacts/:id/edit" do
+  @contact = Contact.find_by({id: params[:id].to_i})
+
+  erb :edit_contact
+end
+
+
+# *----THIS POST WILL ADD A NEW CONTACT INTO OUR CRM AND WILL THEN REDIRCT TO THE /CONTACTS PAGE----*
 post '/contacts' do
   Contact.create(
     first_name: params[:first_name],
