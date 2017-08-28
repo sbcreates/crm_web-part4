@@ -41,7 +41,7 @@ end
 
 # *----THIS POST WILL ADD A NEW CONTACT INTO OUR CRM AND WILL THEN REDIRCT TO THE /CONTACTS PAGE----*
 post '/contacts' do
-  Contact.create(
+  @contacts << Contact.create(
     first_name: params[:first_name],
     last_name: params[:last_name],
     email: params[:email],
@@ -51,7 +51,7 @@ post '/contacts' do
 end
 
 # *----THIS ROUTE IS TO HANDLE THE PUT REQUEST THAT WILL BE SUBITTED TO OUR SERVER ONCE WE REQUEST TO UPDATE A CONTACT BY THEIR ID NUMBER.----*
-put '/contact/:id' do
+put '/contacts/:id' do
   # the params hash will contain the id along with any of information we submitted in the form.
   @contact = Contact.find_by(id: params[:id].to_i)
     @contact.update(
@@ -59,8 +59,19 @@ put '/contact/:id' do
     last_name: params[:last_name],
     email: params[:email],
     note: params[:note]
+    )
+  redirect to('/contacts')
+end
+
+# *----REMOVE CONTACT----*
+delete '/contacts/:id' do
+  @contact = Contact.find(params[:id].to_i)
+
+  @contact.delete
+  @contacts.delete
 
   redirect to('/contacts')
+
 end
 
 
